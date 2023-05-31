@@ -70,16 +70,16 @@ export default function CartModal({
                 </button>
               </div>
 
-              {cart.lines.length === 0 ? (
+              {cart?.lines.length === 0 ? (
                 <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
                   <ShoppingBagIcon className="h-16" />
                   <p className="mt-6 text-center text-2xl font-bold">Your cart is empty.</p>
                 </div>
               ) : null}
-              {cart.lines.length !== 0 ? (
+              {cart?.lines.length !== 0 ? (
                 <div className="flex h-full flex-col justify-between overflow-hidden">
                   <ul className="flex-grow overflow-auto p-6">
-                    {cart.lines.map((item, i) => {
+                    {cart?.lines.map((item, i) => {
                       const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
                       item.merchandise.selectedOptions.forEach(({ name, value }) => {
@@ -145,16 +145,16 @@ export default function CartModal({
                       <p>Subtotal</p>
                       <Price
                         className="text-right"
-                        amount={cart.cost.subtotalAmount.amount}
-                        currencyCode={cart.cost.subtotalAmount.currencyCode}
+                        amount={cart?.cost.subtotalAmount.amount}
+                        currencyCode={cart?.cost.subtotalAmount.currencyCode}
                       />
                     </div>
                     <div className="mb-2 flex items-center justify-between">
                       <p>Taxes</p>
                       <Price
                         className="text-right"
-                        amount={cart.cost.totalTaxAmount.amount}
-                        currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                        amount={cart?.cost.totalTaxAmount.amount}
+                        currencyCode={cart?.cost.totalTaxAmount.currencyCode}
                       />
                     </div>
                     <div className="mb-2 flex items-center justify-between border-b border-gray-200 pb-2">
@@ -165,13 +165,13 @@ export default function CartModal({
                       <p>Total</p>
                       <Price
                         className="text-right"
-                        amount={cart.cost.totalAmount.amount}
-                        currencyCode={cart.cost.totalAmount.currencyCode}
+                        amount={cart?.cost.totalAmount.amount}
+                        currencyCode={cart?.cost.totalAmount.currencyCode}
                       />
                     </div>
                   </div>
                   <a
-                    href={cart.checkoutUrl}
+                    href={cart?.checkoutUrl}
                     className="flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black"
                   >
                     <span>Proceed to Checkout</span>
