@@ -1,57 +1,32 @@
 'use client';
 
 import clsx from 'clsx';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState, useTransition } from 'react';
 
 import LoadingDots from 'components/loading-dots';
-import { ProductVariant } from 'lib/shopify/types';
+import { addToCart } from 'lib/shopify';
+import { Product } from 'lib/shopify/types';
 
 export function AddToCart({
-  variants,
+  product,
   availableForSale
 }: {
-  variants: ProductVariant[];
+  product: Product;
   availableForSale: boolean;
 }) {
-  const [selectedVariantId, setSelectedVariantId] = useState(variants[0]?.id);
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [adding, setAdding] = useState(false);
 
-  useEffect(() => {
-    const variant = variants.find((variant: ProductVariant) =>
-      variant.selectedOptions.every(
-        (option) => option.value === searchParams.get(option.name.toLowerCase())
-      )
-    );
-
-    if (variant) {
-      setSelectedVariantId(variant.id);
-    }
-  }, [searchParams, variants, setSelectedVariantId]);
-
   const isMutating = adding || isPending;
-
   async function handleAdd() {
     if (!availableForSale) return;
 
     setAdding(true);
 
-    const response = await fetch(`/api/cart`, {
-      method: 'POST',
-      body: JSON.stringify({
-        merchandiseId: selectedVariantId
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
+    // const productId = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+    addToCart('8d5c1c90ef2116fbc554137159686f99', product);
 
     setAdding(false);
 
