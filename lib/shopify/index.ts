@@ -9,6 +9,214 @@ const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 
 type ExtractVariables<T> = T extends { variables: object } ? T['variables'] : never;
 
+const products = [
+  {
+    id: 'gid://shopify/Product/6621772644516',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-black.png?v=1623159405',
+        altText: '',
+        width: 2048,
+        height: 2048
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-white.png?v=1623159430',
+        altText: '',
+        width: 2048,
+        height: 2048
+      }
+    ],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/40064679805092',
+        price: {
+          amount: '25',
+          currencyCode: 'USD'
+        },
+        availableForSale: true,
+        title: 'Product',
+        selectedOptions: []
+      }
+    ],
+    options: [
+      {
+        id: 'gid://shopify/ProductOption/8505918849188',
+        name: 'color',
+        values: ['#FFFFFF', '#000000']
+      }
+    ],
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.',
+    descriptionHtml:
+      '<meta charset="utf-8"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.</span>',
+    availableForSale: true,
+    priceRange: {
+      maxVariantPrice: { amount: '70.0', currencyCode: 'USD' },
+      minVariantPrice: { amount: '35.0', currencyCode: 'USD' }
+    },
+    featuredImage: {
+      url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-black.png?v=1623159405',
+      altText: '',
+      width: 600,
+      height: 600
+    },
+    handle: 'acme-cup',
+    seo: { description: 'test', title: 'test' },
+    tags: [],
+    title: 'ACME Cup',
+    updatedAt: '2018-04-09T15:00:00.000Z'
+  },
+  {
+    id: 'gid://shopify/Product/5447325024420',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-0.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-4.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-3.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-2.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      }
+    ],
+    featuredImage: {
+      url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-0.png?v=1622902418',
+      altText: '',
+      width: 600,
+      height: 600
+    },
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/40064679805092',
+        price: {
+          amount: '25',
+          currencyCode: 'USD'
+        },
+        availableForSale: true,
+        title: 'Product',
+        selectedOptions: []
+      }
+    ],
+    options: [
+      {
+        id: 'gid://shopify/ProductOption/6940503769252',
+        name: 'size',
+        values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+      },
+      {
+        id: 'gid://shopify/ProductOption/8655765471396',
+        name: 'color',
+        values: ['#FFFFFF', '#808080', '#00CED1', '#FFA07A']
+      }
+    ],
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.',
+    descriptionHtml:
+      '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.<br></p>',
+    availableForSale: true,
+    handle: 'short-sleeve-t-shirt',
+    title: 'Short Sleeve T-Shirt',
+    seo: { description: 'test', title: 'test' },
+    tags: [],
+    updatedAt: '2018-04-09T15:00:00.000Z',
+    priceRange: {
+      maxVariantPrice: { amount: '70.0', currencyCode: 'USD' },
+      minVariantPrice: { amount: '35.0', currencyCode: 'USD' }
+    }
+  },
+  {
+    id: 'gid://shopify/Product/5447325024420',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-0.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-4.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-3.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      },
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-t-shirt-2.png?v=1622902418',
+        altText: '',
+        width: 1000,
+        height: 1000
+      }
+    ],
+    featuredImage: {
+      url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/short-sleeve-0.png?v=1622901991',
+      altText: '',
+      width: 600,
+      height: 600
+    },
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/40064679805092',
+        price: {
+          amount: '25',
+          currencyCode: 'USD'
+        },
+        availableForSale: true,
+        title: 'Product',
+        selectedOptions: []
+      }
+    ],
+    options: [
+      {
+        id: 'gid://shopify/ProductOption/6940503769252',
+        name: 'size',
+        values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+      },
+      {
+        id: 'gid://shopify/ProductOption/8655765471396',
+        name: 'color',
+        values: ['#FFFFFF', '#808080', '#00CED1', '#FFA07A']
+      }
+    ],
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.',
+    descriptionHtml:
+      '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.<br></p>',
+    availableForSale: true,
+    title: 'New Short Sleeve T-Shirt',
+    handle: 'new-short-sleeve-t-shirt',
+    seo: { description: 'test', title: 'test' },
+    tags: [],
+    updatedAt: '2018-04-09T15:00:00.000Z',
+    priceRange: {
+      maxVariantPrice: { amount: '70.0', currencyCode: 'USD' },
+      minVariantPrice: { amount: '35.0', currencyCode: 'USD' }
+    }
+  }
+];
+
+let cart: any = {};
+const cartItems: Product[] = [];
+
 export function getCollection(handle: string): Collection | undefined {
   // const res = await shopifyFetch<ShopifyCollectionOperation>({
   //   query: getCollectionQuery,
@@ -27,6 +235,27 @@ export function getCollection(handle: string): Collection | undefined {
     updatedAt: 'updatedAt',
     path: 'path'
   };
+}
+
+export function getCollections(): Array<Collection> {
+  // const res = await shopifyFetch<ShopifyCollectionOperation>({
+  //   query: getCollectionQuery,
+  //   variables: {
+  //     handle
+  //   }
+  // });
+
+  // return reshapeCollection(res.body.data.collection);
+  return [
+    {
+      handle: 'handle',
+      title: 'handle',
+      description: 'description',
+      seo: { title: 'seo', description: 'description' },
+      updatedAt: 'updatedAt',
+      path: 'path'
+    }
+  ];
 }
 
 export function getCollectionProducts({
@@ -54,68 +283,10 @@ export function getCollectionProducts({
 
   console.log(collection, reverse, sortKey);
 
-  return [
-    {
-      id: 'gid://shopify/Product/6621772644516',
-
-      images: [
-        {
-          url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-black.png?v=1623159405',
-          altText: '',
-          width: 2048,
-          height: 2048
-        },
-        {
-          url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-white.png?v=1623159430',
-          altText: '',
-          width: 2048,
-          height: 2048
-        }
-      ],
-      variants: [
-        {
-          id: 'gid://shopify/ProductVariant/40064679805092',
-          price: {
-            amount: '25',
-            currencyCode: 'USD'
-          },
-          availableForSale: true,
-          title: 'Product',
-          selectedOptions: []
-        }
-      ],
-      options: [
-        {
-          id: 'gid://shopify/ProductOption/8505918849188',
-          name: 'color',
-          values: ['#FFFFFF', '#000000']
-        }
-      ],
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.',
-      descriptionHtml:
-        '<meta charset="utf-8"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.</span>',
-      availableForSale: true,
-      priceRange: {
-        maxVariantPrice: { amount: '70.0', currencyCode: 'USD' },
-        minVariantPrice: { amount: '35.0', currencyCode: 'USD' }
-      },
-      featuredImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0434/0285/4564/products/Cup-front-black.png?v=1623159405',
-        altText: '',
-        width: 600,
-        height: 600
-      },
-      handle: 'test',
-      seo: { description: 'test', title: 'test' },
-      tags: [],
-      title: 'test',
-      updatedAt: '2018-04-09T15:00:00.000Z'
-    }
-  ];
+  return products;
 }
 
-export function getCart(cartId: string): Cart | null {
+export function getCart(cartId: string): Cart {
   // const res = await shopifyFetch<ShopifyCartOperation>({
   //   query: getCartQuery,
   //   variables: { cartId },
@@ -127,19 +298,47 @@ export function getCart(cartId: string): Cart | null {
   // }
 
   // return reshapeCart(res.body.data.cart);
-  console.log(cartId);
+  console.log('getCart ', cartId, cart);
 
-  return null;
+  return cart;
 }
 
-export function createCart(): Cart | undefined {
+export function createCart(): void {
   // const res = await shopifyFetch<ShopifyCreateCartOperation>({
   //   query: createCartMutation,
   //   cache: 'no-store'
   // });
 
   // return reshapeCart(res.body.data.cartCreate.cart);
-  return undefined;
+  cart = {
+    ...cart,
+    id: '8d5c1c90ef2116fbc554137159686f99',
+    checkoutUrl: '',
+    cost: {
+      subtotalAmount: { amount: '25.0', currencyCode: 'USD' },
+      totalAmount: { amount: '25.0', currencyCode: 'USD' },
+      totalTaxAmount: { amount: '25.0', currencyCode: 'USD' }
+    },
+    lines: [],
+    totalQuantity: 0
+  };
+}
+
+export function addToCart(cartId: string, lint: Product): Array<Product> {
+  // const res = await shopifyFetch<ShopifyAddToCartOperation>({
+  //   query: addToCartMutation,
+  //   variables: {
+  //     cartId,
+  //     lines
+  //   },
+  //   cache: 'no-store'
+  // });
+  // return reshapeCart(res.body.data.cartLinesAdd.cart);
+  // const product = products.find((product) => product.id === lineId);
+  cartItems.push(lint);
+  cart.quantity++;
+  console.log(cartItems);
+  return cartItems;
 }
 
 export function getMenu(handle: string): Menu[] {
@@ -160,6 +359,19 @@ export function getMenu(handle: string): Menu[] {
   console.log(handle);
 
   return [{ title: 'next', path: '/pages' }];
+}
+
+export async function getProduct(handle: string): Promise<Product | undefined> {
+  // const res = await shopifyFetch<ShopifyProductOperation>({
+  //   query: getProductQuery,
+  //   variables: {
+  //     handle
+  //   }
+  // });
+
+  // return reshapeProduct(res.body.data.product, false);
+
+  return products?.find((product) => product.handle === handle);
 }
 
 // export async function shopifyFetch<T>({
@@ -376,27 +588,17 @@ export function getMenu(handle: string): Menu[] {
 //   return removeEdgesAndNodes(res.body.data.pages);
 // }
 
-// export async function getProduct(handle: string): Promise<Product | undefined> {
-//   const res = await shopifyFetch<ShopifyProductOperation>({
-//     query: getProductQuery,
-//     variables: {
-//       handle
-//     }
-//   });
+export function getProductRecommendations(productId: string): Product[] {
+  // const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
+  //   query: getProductRecommendationsQuery,
+  //   variables: {
+  //     productId
+  //   }
+  // });
 
-//   return reshapeProduct(res.body.data.product, false);
-// }
-
-// export async function getProductRecommendations(productId: string): Promise<Product[]> {
-//   const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
-//     query: getProductRecommendationsQuery,
-//     variables: {
-//       productId
-//     }
-//   });
-
-//   return reshapeProducts(res.body.data.productRecommendations);
-// }
+  // return reshapeProducts(res.body.data.productRecommendations);
+  return [];
+}
 
 // export async function getProducts({
 //   query,
