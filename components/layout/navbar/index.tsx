@@ -13,13 +13,13 @@ export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   return (
-    <nav className="relative flex items-center justify-between bg-white p-4 dark:bg-black lg:px-6">
+    <nav className="relative flex items-center justify-between bg-white p-4 lg:px-6 dark:bg-black">
       <div className="block w-1/3 md:hidden">
         <MobileMenu menu={menu} />
       </div>
       <div className="flex justify-self-center md:w-1/3 md:justify-self-start">
         <div className="md:mr-4">
-          <Link href="/" aria-label="Go back home">
+          <Link href="/" aria-label="Go back home" title="zero">
             <LogoIcon className="h-8 transition-transform hover:scale-110" />
           </Link>
         </div>

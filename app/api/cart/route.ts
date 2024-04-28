@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { addToCart, removeFromCart, updateCart } from 'lib/shopify';
+import { addToCart } from 'lib/shopify';
 import { isShopifyError } from 'lib/type-guards';
 
 function formatErrorMessage(err: Error): string {
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     return NextResponse.json({ error: 'Missing cartId or variantId' }, { status: 400 });
   }
   try {
-    await addToCart(cartId, [{ merchandiseId, quantity: 1 }]);
+    await addToCart(cartId, undefined);
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 }
 
-export async function PUT(req: NextRequest): Promise<Response> {
+export async function PUT(req: NextRequest) {
   const cartId = cookies().get('cartId')?.value;
   const { variantId, quantity, lineId } = await req.json();
 
@@ -37,39 +37,13 @@ export async function PUT(req: NextRequest): Promise<Response> {
       { status: 400 }
     );
   }
-  try {
-    await updateCart(cartId, [
-      {
-        id: lineId,
-        merchandiseId: variantId,
-        quantity
-      }
-    ]);
-    return NextResponse.json({ status: 204 });
-  } catch (e) {
-    if (isShopifyError(e)) {
-      return NextResponse.json({ message: formatErrorMessage(e.message) }, { status: e.status });
-    }
-
-    return NextResponse.json({ status: 500 });
-  }
 }
 
-export async function DELETE(req: NextRequest): Promise<Response> {
+export async function DELETE(req: NextRequest) {
   const cartId = cookies().get('cartId')?.value;
   const { lineId } = await req.json();
 
   if (!cartId || !lineId) {
     return NextResponse.json({ error: 'Missing cartId or lineId' }, { status: 400 });
-  }
-  try {
-    await removeFromCart(cartId, [lineId]);
-    return NextResponse.json({ status: 204 });
-  } catch (e) {
-    if (isShopifyError(e)) {
-      return NextResponse.json({ message: formatErrorMessage(e.message) }, { status: e.status });
-    }
-
-    return NextResponse.json({ status: 500 });
   }
 }

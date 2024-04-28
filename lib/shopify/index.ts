@@ -324,7 +324,7 @@ export function createCart(): void {
   };
 }
 
-export function addToCart(cartId: string, lint: Product): Array<Product> {
+export function addToCart(cartId: string, lint?: Product): Array<Product> {
   // const res = await shopifyFetch<ShopifyAddToCartOperation>({
   //   query: addToCartMutation,
   //   variables: {
@@ -335,7 +335,7 @@ export function addToCart(cartId: string, lint: Product): Array<Product> {
   // });
   // return reshapeCart(res.body.data.cartLinesAdd.cart);
   // const product = products.find((product) => product.id === lineId);
-  cartItems.push(lint);
+  if (lint) cartItems.push(lint);
   cart.quantity++;
   console.log(cartItems);
   return cartItems;
