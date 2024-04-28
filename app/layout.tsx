@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="logo.png" />
-        <title>AIU E-Commerce</title>
+        <title>Zero E-Commerce</title>
       </head>
       <body className="bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
         {/* @ts-expect-error Server Component */}

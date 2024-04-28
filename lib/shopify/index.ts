@@ -356,9 +356,21 @@ export function getMenu(handle: string): Menu[] {
   //   })) || []
   // );
 
-  console.log(handle);
-
-  return [{ title: 'next', path: '/pages' }];
+  if (handle === 'next-js-frontend-header-menu')
+    return [
+      { title: 'All', path: '/pages' },
+      { title: 'Shirts', path: 'search' }
+    ];
+  else {
+    return [
+      { title: 'Home', path: '/home' },
+      { title: 'About', path: 'search' },
+      { title: 'Terms & Conditions', path: 'search' },
+      { title: 'Shipping & Return Policy', path: 'search' },
+      { title: 'Privacy Policy', path: 'search' },
+      { title: 'FAQ', path: 'search' }
+    ];
+  }
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
