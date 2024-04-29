@@ -2,10 +2,10 @@
 
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useContext, useState, useTransition } from 'react';
 
+import { AppContext } from 'app/appcontext';
 import LoadingDots from 'components/loading-dots';
-import { addToCart } from 'lib/shopify';
 import { Product } from 'lib/shopify/types';
 
 export function AddToCart({
@@ -18,6 +18,7 @@ export function AddToCart({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [adding, setAdding] = useState(false);
+  const {cart, setCart} = useContext(AppContext);
 
   const isMutating = adding || isPending;
   async function handleAdd() {
@@ -26,7 +27,10 @@ export function AddToCart({
     setAdding(true);
 
     // const productId = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-    addToCart('8d5c1c90ef2116fbc554137159686f99', product);
+    // addToCart('8d5c1c90ef2116fbc554137159686f99', product);
+
+    setCart?.({product: product, });
+    
 
     setAdding(false);
 

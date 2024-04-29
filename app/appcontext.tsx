@@ -1,3 +1,5 @@
+"use client"
+import { CartItem } from 'lib/shopify/types';
 import { createContext, useState } from 'react';
 
 interface AppContextProps {
@@ -6,18 +8,20 @@ interface AppContextProps {
 }
 
 export const AppContext = createContext<AppContextProps>({
-  value: undefined,
-  setValue: undefined
+  cart: undefined,
+  setCart: undefined
 });
 
 const AppContextProvider = (props: { children: React.ReactNode }) => {
-  const [value, setValue] = useState<boolean>(false);
+  const [cart, setCart] = useState<CartItem>({
+    id: "123456"
+  });
 
   return (
     <AppContext.Provider
       value={{
-        value: value,
-        setValue: setValue
+        cart,
+        setCart
       }}
     >
       {props.children}

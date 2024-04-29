@@ -25,6 +25,9 @@ export default function CartModal({
   onClose: () => void;
   cart: Cart;
 }) {
+
+  console.log(cart);
+  
   return (
     <AnimatePresence initial={false}>
       {isOpen && (

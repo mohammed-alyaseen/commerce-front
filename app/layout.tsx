@@ -1,7 +1,7 @@
 import Navbar from 'components/layout/navbar';
 import { Inter } from 'next/font/google';
 import { ReactNode, Suspense } from 'react';
-// import AppContextProvider from './appcontext';
+import AppContextProvider from './appcontext';
 import './globals.css';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -40,15 +40,16 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body className="bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
         {/* @ts-expect-error Server Component */}
-        <Navbar />
-        <Suspense>
+        
+        {/* <Suspense>
           <main>{children}</main>
-        </Suspense>
-        {/* <AppContextProvider>
+        </Suspense> */}
+        <AppContextProvider>
+          <Navbar />
           <Suspense>
             <main>{children}</main>
           </Suspense>
-        </AppContextProvider> */}
+        </AppContextProvider>
       </body>
     </html>
   );
