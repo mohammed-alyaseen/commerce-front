@@ -1,36 +1,62 @@
 import CloseIcon from 'components/icons/close';
 import LoadingDots from 'components/loading-dots';
 import { useRouter } from 'next/navigation';
-import { startTransition, useState } from 'react';
+import { useContext, useState } from 'react';
 
+import { AppContext } from 'app/appcontext';
 import clsx from 'clsx';
 import type { CartItem } from 'lib/shopify/types';
 
 export default function DeleteItemButton({ item }: { item: CartItem }) {
   const router = useRouter();
   const [removing, setRemoving] = useState(false);
+  const { cart, setCart } = useContext(AppContext);
 
   async function handleRemove() {
     setRemoving(true);
 
-    const response = await fetch(`/api/cart`, {
-      method: 'DELETE',
-      body: JSON.stringify({
-        lineId: item.id
-      })
+    setCart?.({
+      lines: cart.lines.filter(
+        (line: CartItem) => line.merchandise?.product?.id !== item?.merchandise?.product?.id
+      ),
+      cost: {
+        subtotalAmount: {
+          amount:
+            Number(cart?.cost?.totalAmount?.amount) ||
+            0 - Number(item?.merchandise?.product?.priceRange?.maxVariantPrice?.amount) ||
+            0,
+          currencyCode: 'USD'
+        },
+        totalTaxAmount: {
+          amount: '0',
+          currencyCode: 'USD'
+        },
+        totalAmount: {
+          amount:
+            Number(cart?.cost?.totalAmount?.amount || 0) -
+              Number(item?.merchandise?.product?.priceRange?.maxVariantPrice?.amount) || 0,
+          currencyCode: 'USD'
+        }
+      }
     });
-    const data = await response.json();
+    // const response = await fetch(`/api/cart`, {
+    //   method: 'DELETE',
+    //   body: JSON.stringify({
+    //     lineId: item.id
+    //   })
+    // });
+    // const data = await response.json();
 
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
+    // if (data.error) {
+    //   alert(data.error);
+    //   return;
+    // }
 
     setRemoving(false);
 
-    startTransition(() => {
-      router.refresh();
-    });
+    // startTransition(() => {
+    //   router.refresh();
+    // });
   }
   return (
     <button
