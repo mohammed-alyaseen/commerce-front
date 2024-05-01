@@ -132,8 +132,9 @@ export default function CartModal({
                     </div>
                   </div>
                   <a
-                    href={cart?.checkoutUrl}
+                    href={'https://buy.stripe.com/test_14k145919gbq7FS5kk'}
                     className="flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black"
+                    // onClick={handleSubscription}
                   >
                     <span>Proceed to Checkout</span>
                   </a>

@@ -24,6 +24,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@vercel/og": "^0.5.4",
+    "axios": "^1.6.8",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.8",
     "is-empty-iterable": "^3.0.0",
