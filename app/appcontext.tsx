@@ -1,5 +1,5 @@
 "use client"
-import { CartItem } from 'lib/shopify/types';
+import { Cart } from 'lib/shopify/types';
 import { createContext, useState } from 'react';
 
 interface AppContextProps {
@@ -13,9 +13,12 @@ export const AppContext = createContext<AppContextProps>({
 });
 
 const AppContextProvider = (props: { children: React.ReactNode }) => {
-  const [cart, setCart] = useState<CartItem>({
-    id: "123456"
-  });
+  const [cart, setCart] = useState<Cart>({lines: [], cost: {
+    totalAmount: {
+      amount: '0.0',
+      currencyCode: 'USD'
+    }
+  }});
 
   return (
     <AppContext.Provider

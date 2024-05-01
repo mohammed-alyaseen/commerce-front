@@ -120,5 +120,5 @@ export default async function Cart() {
   // }
 
   // @ts-ignore
-  return <CartButton cart={cart} cartIdUpdated={cartIdUpdated} />;
+  return <CartButton cart={crt} cartIdUpdated={cartIdUpdated} />;
 }

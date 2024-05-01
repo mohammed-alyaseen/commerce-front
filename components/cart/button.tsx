@@ -19,6 +19,7 @@ export default function CartButton({
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
 
+
   // Temporary hack to update the `cartId` cookie when it changes since we cannot update it
   // on the server-side (yet).
   useEffect(() => {
