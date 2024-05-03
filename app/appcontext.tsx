@@ -3,8 +3,8 @@ import { Cart } from 'lib/shopify/types';
 import { createContext, useState } from 'react';
 
 interface AppContextProps {
-  value?: boolean;
-  setValue?: React.Dispatch<React.SetStateAction<boolean>>;
+  cart?: Cart;
+  setCart?: React.Dispatch<React.SetStateAction<Cart>>;
 }
 
 export const AppContext = createContext<AppContextProps>({
@@ -15,6 +15,7 @@ export const AppContext = createContext<AppContextProps>({
 const AppContextProvider = (props: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<Cart>({
     lines: [],
+    // @ts-ignore
     cost: {
       totalAmount: {
         amount: '0.0',
