@@ -54,7 +54,7 @@ export default async function Footer() {
             &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
           </p>
           <div className="flex items-center text-sm text-white dark:text-black">
-            <span className="text-black dark:text-white">Created by</span>
+            <span className="text-black dark:text-white">Reproduce by </span>
             <a
               rel="noopener noreferrer"
               href="https://mohammed-alyaseen.github.io/portfolio/"
@@ -62,7 +62,7 @@ export default async function Footer() {
               target="_blank"
               className="text-black dark:text-white"
             >
-              Mohammed Al-yaseen
+              &nbsp; Mohammed Al-yaseen
             </a>
           </div>
         </div>
