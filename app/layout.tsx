@@ -39,12 +39,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <title>Zero E-Commerce</title>
       </head>
       <body className="bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
-        {/* @ts-expect-error Server Component */}
-
         {/* <Suspense>
           <main>{children}</main>
         </Suspense> */}
         <AppContextProvider>
+          {/* @ts-expect-error Server Component */}
           <Navbar />
           <Suspense>
             <main>{children}</main>

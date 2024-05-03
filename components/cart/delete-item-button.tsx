@@ -1,6 +1,5 @@
 import CloseIcon from 'components/icons/close';
 import LoadingDots from 'components/loading-dots';
-import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 
 import { AppContext } from 'app/appcontext';
@@ -8,7 +7,6 @@ import clsx from 'clsx';
 import type { CartItem } from 'lib/shopify/types';
 
 export default function DeleteItemButton({ item }: { item: CartItem }) {
-  const router = useRouter();
   const [removing, setRemoving] = useState(false);
   const { cart, setCart } = useContext(AppContext);
 

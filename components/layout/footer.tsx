@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import GitHubIcon from 'components/icons/github';
 import LogoIcon from 'components/icons/logo';
-import VercelIcon from 'components/icons/vercel';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 
@@ -58,12 +57,12 @@ export default async function Footer() {
             <span className="text-black dark:text-white">Created by</span>
             <a
               rel="noopener noreferrer"
-              href="https://vercel.com"
+              href="https://mohammed-alyaseen.github.io/portfolio/"
               aria-label="Vercel.com Link"
               target="_blank"
               className="text-black dark:text-white"
             >
-              <VercelIcon className="ml-3 inline-block h-6" />
+              Mohammed Al-yaseen
             </a>
           </div>
         </div>

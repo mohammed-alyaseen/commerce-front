@@ -2,12 +2,12 @@
 import { Cart } from 'lib/shopify/types';
 import { createContext, useState } from 'react';
 
-interface AppContextProps {
-  cart?: Cart;
-  setCart?: React.Dispatch<React.SetStateAction<Cart>>;
-}
+// interface AppContextProps {
+//   cart?: Cart;
+//   setCart?: React.Dispatch<React.SetStateAction<Cart>>;
+// }
 
-export const AppContext = createContext<AppContextProps>({
+export const AppContext = createContext<any>({
   cart: undefined,
   setCart: undefined
 });

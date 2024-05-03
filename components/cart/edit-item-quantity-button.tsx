@@ -1,4 +1,3 @@
-import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 
 import { AppContext } from 'app/appcontext';
@@ -15,14 +14,13 @@ export default function EditItemQuantityButton({
   item: CartItem;
   type: 'plus' | 'minus';
 }) {
-  const router = useRouter();
   const [editing, setEditing] = useState(false);
   const { cart, setCart } = useContext(AppContext);
 
   function handleEdit() {
     setEditing(true);
     setCart?.({
-      lines: cart.lines.map((line: CartItem) => {
+      lines: cart?.lines.map((line: CartItem) => {
         if (
           line?.merchandise?.product?.id === item?.merchandise?.product?.id &&
           (type === 'plus' || (type === 'minus' && line?.quantity > 1))
